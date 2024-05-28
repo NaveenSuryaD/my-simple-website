@@ -1,3 +1,10 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -32,10 +39,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Login to Vercel
-        run: npx vercel login
+      - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
 
-      - name: Deploy to Vercel
-        run: npx vercel --prod --yes
+      - name: Logout from Vercel
+        run: npx vercel logout
