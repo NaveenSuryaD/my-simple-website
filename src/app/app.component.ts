@@ -24,7 +24,6 @@ export class AppComponent {
   tulips: Tulip[] = [];
 
   showMessage() {
-    console.log('Gift box clicked');
     this.giftBoxVisible = false;
     this.messageVisible = true;
     this.initializeTulips();
