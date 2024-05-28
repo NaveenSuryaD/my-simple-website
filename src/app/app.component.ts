@@ -8,6 +8,7 @@ interface Tulip {
     left: string;
     position: string;
   };
+  src: string;
 }
 
 @Component({
@@ -26,21 +27,28 @@ export class AppComponent {
     console.log('Gift box clicked');
     this.giftBoxVisible = false;
     this.messageVisible = true;
-    setTimeout(() => this.animateTulips(), 500);
+    this.initializeTulips();
+    setInterval(() => this.animateTulips(), 5000); // Adjust interval as needed
   }
 
-  animateTulips() {
-    this.tulips = []; // Clear any existing tulips
+  initializeTulips() {
     for (let i = 0; i < 50; i++) {
       const tulip: Tulip = {
         style: {
           top: Math.random() * 100 + 'vh',
           left: Math.random() * 100 + 'vw',
           position: 'absolute'
-        }
+        },
+        src: 'tulip.png' // Ensure this path is correct
       };
       this.tulips.push(tulip);
-      console.log(`Tulip ${i} added at ${tulip.style.top}, ${tulip.style.left}`);
+    }
+  }
+
+  animateTulips() {
+    for (let i = 0; i < this.tulips.length; i++) {
+      this.tulips[i].style.top = Math.random() * 100 + 'vh';
+      this.tulips[i].style.left = Math.random() * 100 + 'vw';
     }
   }
 }

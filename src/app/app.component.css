@@ -5,6 +5,7 @@
   height: 100vh;
   position: relative;
   background-color: #f0f0f0;
+  overflow: hidden; /* Ensure tulips don't overflow the container */
 }
 
 .gift-box {
@@ -24,35 +25,9 @@
 
 .tulip {
   position: absolute;
-  width: 10px;
-  height: 60px;
-  background-color: green; /* Green for stem */
-  border-radius: 5px;
-  animation: blossom 3s ease-in-out, float 5s infinite;
-}
-
-.tulip::before,
-.tulip::after {
-  content: '';
-  position: absolute;
-  top: -20px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 20px solid red; /* Red color for petals */
-}
-
-.tulip::before {
-  left: -10px;
-  transform: rotate(-30deg);
-  border-bottom-color: red; /* Ensure red color */
-}
-
-.tulip::after {
-  right: -10px;
-  transform: rotate(30deg);
-  border-bottom-color: red; /* Ensure red color */
+  width: 30px; /* Adjust size as needed */
+  height: auto;
+  animation: pop 5s ease-in-out infinite; /* Slower animation */
 }
 
 @keyframes shake {
@@ -62,19 +37,7 @@
   75% { transform: translateX(-10px); }
 }
 
-@keyframes blossom {
-  from {
-    transform: scale(0);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+@keyframes pop {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
 }
