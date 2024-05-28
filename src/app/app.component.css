@@ -22,25 +22,37 @@
   color: black;
 }
 
-.tulip-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  border: 2px solid red; /* For debugging */
-}
-
 .tulip {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: url('/assets/tulip.png') no-repeat center center;
-  background-size: contain;
-  animation: blossom 3s ease-in-out;
-  border: 1px solid blue; /* For debugging */
+  width: 10px;
+  height: 60px;
+  background-color: green; /* Green for stem */
+  border-radius: 5px;
+  animation: blossom 3s ease-in-out, float 5s infinite;
+}
+
+.tulip::before,
+.tulip::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid red; /* Red color for petals */
+}
+
+.tulip::before {
+  left: -10px;
+  transform: rotate(-30deg);
+  border-bottom-color: red; /* Ensure red color */
+}
+
+.tulip::after {
+  right: -10px;
+  transform: rotate(30deg);
+  border-bottom-color: red; /* Ensure red color */
 }
 
 @keyframes shake {
@@ -59,4 +71,10 @@
     transform: scale(1);
     opacity: 1;
   }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }

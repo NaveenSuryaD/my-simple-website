@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="gift-box" (click)="showMessage()">🎁</div>
+  <div class="gift-box" *ngIf="giftBoxVisible" (click)="showMessage()">🎁</div>
   <div class="message" *ngIf="messageVisible">Love you Harshi</div>
-  <div class="tulip-container" *ngIf="messageVisible"></div>
+  <div class="tulip" *ngFor="let tulip of tulips" [ngStyle]="tulip.style"></div>
 </div>
