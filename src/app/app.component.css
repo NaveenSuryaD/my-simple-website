@@ -1,5 +1,62 @@
 .container {
-    text-align: center;
-    margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background-color: #f0f0f0;
+}
+
+.gift-box {
+  font-size: 100px;
+  cursor: pointer;
+  animation: shake 1s infinite;
+}
+
+.message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: black;
+}
+
+.tulip-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  border: 2px solid red; /* For debugging */
+}
+
+.tulip {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: url('/assets/tulip.png') no-repeat center center;
+  background-size: contain;
+  animation: blossom 3s ease-in-out;
+  border: 1px solid blue; /* For debugging */
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+}
+
+@keyframes blossom {
+  from {
+    transform: scale(0);
+    opacity: 0;
   }
-  
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
